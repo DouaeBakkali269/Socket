@@ -1,3 +1,5 @@
+package socket;
+
 import java.io.*;
 
 class Person implements Serializable {

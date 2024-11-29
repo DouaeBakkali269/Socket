@@ -28,10 +28,7 @@ public class Main {
         runtime.gc();
         System.out.println("Mémoire totale : " + runtime.totalMemory());
         System.out.println("Mémoire libre avant GC : " + runtime.freeMemory());
-        // Ajouter une tâche à exécuter avant la fermeture de la JVM
-        runtime.addShutdownHook(new Thread(() -> {
-            System.out.println("La JVM est sur le point de se fermer.");
-        }));
+
 
 
         Process process1 = Runtime.getRuntime().exec("cmd /c dir"); // Launch an external process (running 'dir' command)
@@ -40,6 +37,10 @@ public class Main {
         while ((line1 = reader1.readLine()) != null) {
             System.out.println(line1); // Read the output of the process
         }
+        // Ajouter une tâche à exécuter avant la    fermeture de la JVM
+        runtime.addShutdownHook(new Thread(() -> {
+            System.out.println("La JVM est sur le point de se fermer.");
+        }));
 
     }
 
